@@ -961,24 +961,49 @@
     @media (max-width: 768px) {
 
       /* ════════════════════════════════════════════════════════════════
-         GPU LAYER ELIMINATION — prevents text ghosting on Android Chrome
+         ROOT CAUSE FIX: every CSS animation + transition creates a
+         separate GPU compositor layer on Android Chrome. When multiple
+         layers exist simultaneously, Chrome duplicates/stacks rendering.
+         Solution: zero out ALL animations and transitions site-wide,
+         then restore only the ones that need to function.
          ════════════════════════════════════════════════════════════════ */
+      *, *::before, *::after {
+        animation: none !important;
+        animation-duration: 0.001ms !important;
+        animation-delay: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition: none !important;
+        transition-duration: 0.001ms !important;
+      }
+      /* Restore: skill bar fill (functional animation, no GPU layer risk) */
+      .skill-fill {
+        transition: width 1.2s ease !important;
+        transition-duration: 1.2s !important;
+      }
+      /* Restore: loader bar (brief, page-load only) */
+      .loader-bar-fill {
+        animation: loadFill 0.8s ease-out forwards !important;
+        animation-duration: 0.8s !important;
+        animation-iteration-count: 1 !important;
+      }
+      /* Restore: modal open/close opacity (functional) */
+      .modal-overlay {
+        transition: opacity 0.2s ease !important;
+        transition-duration: 0.2s !important;
+      }
 
-      /* Kill animated orbs (filter:blur GPU layer) */
+      /* Hide orbs from DOM rendering entirely */
       .orb { display: none !important; }
+      .hero-img-ring::before { border: none; }
+      .floating-tag { display: none !important; }
 
-      /* Kill ring spin animation */
-      .hero-img-ring { animation: none !important; }
-      .hero-img-ring::before { animation: none !important; border: none; }
-
-      /* Kill ALL scroll-reveal transitions (each creates a compositor layer) */
+      /* Reveal elements: always show, never animate */
       .reveal, .reveal.visible {
         opacity: 1 !important;
         transform: none !important;
-        transition: none !important;
       }
 
-      /* Kill nav backdrop-filter (bleeds into page content on some devices) */
+      /* Nav: solid background, no blur compositor layer */
       nav.scrolled {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
@@ -988,12 +1013,8 @@
         background: rgba(244,244,251,.98) !important;
       }
 
-      /* Kill ALL background-clip:text — every one creates a GPU texture */
-      .gradient-text,
-      .nav-logo,
-      .stat-num,
-      .loader-logo,
-      .about-initials {
+      /* Kill ALL background-clip:text (each is a GPU texture layer) */
+      .gradient-text, .nav-logo, .stat-num, .loader-logo, .about-initials {
         background: none !important;
         -webkit-background-clip: initial !important;
         background-clip: initial !important;
@@ -1001,18 +1022,16 @@
         color: var(--accent) !important;
       }
 
-      /* Hard stacking context boundaries to prevent layer bleed */
-      #about { isolation: isolate; }
-
-      /* ════════════════════════════════════════════════════════════════
-         NO HOVER TRANSFORMS ON TOUCH
-         ════════════════════════════════════════════════════════════════ */
-      .skill-pill:hover, .service-card:hover, .stat-card:hover,
-      .testimonial-card:hover, .process-card:hover, .why-item:hover,
-      .why-card:hover, .contact-link:hover, .portfolio-card:hover,
-      .btn-primary:hover, .btn-outline:hover, .social-btn:hover {
+      /* Marquee: stop scroll, show as static wrapped row */
+      .marquee-section { padding: 18px 0; }
+      .marquee-track {
+        width: 100% !important;
+        flex-wrap: wrap !important;
+        gap: 8px 16px !important;
+        justify-content: center !important;
         transform: none !important;
       }
+      .marquee-track .marquee-item:nth-child(n+10) { display: none; }
 
       /* ════════════════════════════════════════════════════════════════
          GLOBALS
@@ -1084,8 +1103,6 @@
       .about-img-card {
         aspect-ratio: 16/9;
         max-height: 220px;
-        /* Contain painting to prevent text bleed */
-        contain: paint;
       }
       .about-initials { font-size: 3.5rem; }
       .about-exp-badge {
@@ -1100,8 +1117,6 @@
       .about-skills-grid {
         grid-template-columns: 1fr 1fr;
         gap: 10px; margin-bottom: 24px;
-        /* Block formatting context — prevents text bleed from above */
-        overflow: hidden;
       }
       .skill-pill { font-size: .82rem; padding: 10px 14px; }
       .timeline { margin-bottom: 28px; }
@@ -2120,6 +2135,38 @@
 <script>
 /* ── INIT LUCIDE ─────────────────────────────────────────── */
 lucide.createIcons();
+
+/* ── MOBILE: kill all GPU compositor sources at runtime ─── */
+(function() {
+  var isMobile = window.matchMedia('(max-width: 768px)').matches
+              || window.matchMedia('(hover: none)').matches;
+  if (!isMobile) return;
+
+  /* Freeze the marquee in place (running transform = GPU layer) */
+  var marquee = document.getElementById('marqueeTrack');
+  if (marquee) {
+    marquee.style.animation = 'none';
+    marquee.style.transform = 'none';
+    marquee.style.width = '100%';
+    marquee.style.flexWrap = 'wrap';
+    marquee.style.justifyContent = 'center';
+    marquee.style.gap = '8px 14px';
+    /* Hide duplicate second half */
+    var items = marquee.querySelectorAll('.marquee-item');
+    for (var i = 9; i < items.length; i++) items[i].style.display = 'none';
+  }
+
+  /* Freeze the avail-dot pulse */
+  var dot = document.querySelector('.avail-dot');
+  if (dot) dot.style.animation = 'none';
+
+  /* Set all existing animated elements to computed final state */
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.transition = 'none';
+  });
+})();
 
 /* ── LOADER ──────────────────────────────────────────────── */
 window.addEventListener('load', () => {
