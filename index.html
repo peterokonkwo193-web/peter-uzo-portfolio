@@ -942,22 +942,49 @@
     /* ── 768px mobile — main mobile breakpoint ───────────────────────── */
     @media (max-width: 768px) {
 
-      /* ── KILL GPU-HEAVY EFFECTS (prevents rendering glitches) ──────── */
+      /* ── KILL EVERY GPU-PROMOTED COMPOSITED LAYER ON MOBILE ────────── */
+
+      /* 1. Animated orbs with filter:blur */
       .orb { display: none !important; }
+
+      /* 2. Spinning ring animation */
       .hero-img-ring { animation: none !important; }
       .hero-img-ring::before { animation: none !important; border: none; }
-      /* Disable all scroll-reveal on mobile — opacity transitions create
-         GPU composited layers that cause text to ghost on Android Chrome */
+
+      /* 3. Scroll-reveal opacity transitions (each creates a compositor layer) */
       .reveal, .reveal.visible {
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
       }
-      /* Gradient text in initials causes layer bleed — use solid color */
-      .about-initials {
-        -webkit-text-fill-color: var(--accent) !important;
-        background: none !important;
+
+      /* 4. Nav backdrop-filter blur (major GPU layer, bleeds into page content) */
+      nav.scrolled {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(10,10,15,.97) !important;
       }
+      [data-theme="light"] nav.scrolled {
+        background: rgba(244,244,251,.98) !important;
+      }
+
+      /* 5. ALL background-clip:text gradient effects — every single one
+            creates a GPU texture that can ghost onto adjacent elements */
+      .gradient-text,
+      .nav-logo,
+      .stat-num,
+      .loader-logo,
+      .about-initials {
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+        -webkit-text-fill-color: var(--accent) !important;
+        color: var(--accent) !important;
+      }
+
+      /* 6. Isolate the about section so no external layer bleeds in */
+      #about { isolation: isolate; }
+      .about-content { isolation: isolate; }
 
       /* ── NO HOVER TRANSFORMS ON TOUCH ─────────────────────────────── */
       .skill-pill:hover,
