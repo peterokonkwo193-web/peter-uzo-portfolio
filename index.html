@@ -908,6 +908,10 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── base mobile-safe rule: no horizontal bleed ever ────────────── */
+    html { overflow-x: hidden; }
+    html, body { max-width: 100%; }
+
     /* ── 1200px ──────────────────────────────────────────────────────── */
     @media (max-width: 1200px) {
       .hero-inner { gap: 40px; }
@@ -920,10 +924,10 @@
     @media (max-width: 1024px) {
       .avail-badge { display: none; }
       .hero-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .hero-img-ring { width: 320px; height: 320px; }
-      .hero-img-blob { width: 268px; height: 268px; }
-      .hero-avatar-placeholder .initials { font-size: 4rem; }
-      .about-grid { gap: 48px; }
+      .hero-img-ring { width: 300px; height: 300px; }
+      .hero-img-blob { width: 252px; height: 252px; }
+      .hero-avatar-placeholder .initials { font-size: 3.8rem; }
+      .about-grid { gap: 40px; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
       .testimonials-slider { grid-template-columns: 1fr 1fr; }
@@ -935,93 +939,119 @@
       .footer-brand p { max-width: 100%; }
     }
 
-    /* ── 768px mobile ────────────────────────────────────────────────── */
+    /* ── 768px mobile — main mobile breakpoint ───────────────────────── */
     @media (max-width: 768px) {
-      /* globals */
-      .section { padding: 70px 0; }
-      .container { padding: 0 20px; }
+
+      /* ── KILL GPU-HEAVY EFFECTS (prevents the glitch/static noise) ── */
+      .orb { display: none !important; }
+      .hero-img-ring { animation: none !important; }
+      .hero-img-ring::before { animation: none !important; border: none; }
+      .reveal { transform: none !important; transition: opacity .5s ease; }
+
+      /* ── NO HOVER TRANSFORMS ON TOUCH ─────────────────────────────── */
+      .skill-pill:hover,
+      .service-card:hover,
+      .stat-card:hover,
+      .testimonial-card:hover,
+      .process-card:hover,
+      .why-item:hover,
+      .why-card:hover,
+      .contact-link:hover,
+      .portfolio-card:hover { transform: none !important; }
+
+      /* ── GLOBALS ───────────────────────────────────────────────────── */
+      .section { padding: 64px 0; overflow-x: hidden; }
+      .container { padding: 0 18px; }
       body { cursor: auto; }
       #cursor, #cursor-ring { display: none; }
 
-      /* nav */
+      /* ── NAV ───────────────────────────────────────────────────────── */
       .avail-badge { display: none; }
       .nav-links { display: none; }
       .nav-actions .btn { display: none; }
       .menu-toggle { display: flex; }
 
-      /* hero */
-      #hero { padding-top: 80px; min-height: auto; padding-bottom: 64px; }
-      .hero-inner {
-        grid-template-columns: 1fr; text-align: center; gap: 36px;
-      }
+      /* ── HERO ──────────────────────────────────────────────────────── */
+      #hero { padding-top: 80px; min-height: auto; padding-bottom: 60px; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
       .hero-content { order: 2; }
       .hero-image-wrap { order: 1; }
-      .hero-badge { font-size: .75rem; }
-      .hero-subtitle { margin: 0 auto 28px; max-width: 90%; }
+      .hero-badge { font-size: .74rem; }
+      .hero-title { font-size: clamp(1.8rem, 6.5vw, 2.6rem); }
+      .hero-subtitle { margin: 0 auto 24px; max-width: 92%; font-size: 1rem; }
       .hero-cta { justify-content: center; gap: 10px; }
       .hero-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .stat-card { padding: 16px 10px; }
-      .stat-num { font-size: 1.6rem; }
+      .stat-card { padding: 14px 10px; }
+      .stat-num { font-size: 1.55rem; }
       .stat-label { font-size: .7rem; }
-      .hero-img-ring { width: 250px; height: 250px; }
-      .hero-img-blob { width: 210px; height: 210px; }
-      .hero-avatar-placeholder .initials { font-size: 3rem; }
-      .hero-avatar-placeholder .name-hint { font-size: .75rem; }
+      .hero-img-ring { width: 230px; height: 230px; }
+      .hero-img-blob { width: 194px; height: 194px; }
+      .hero-avatar-placeholder .initials { font-size: 2.8rem; }
+      .hero-avatar-placeholder .name-hint { font-size: .72rem; }
       .floating-tag { display: none; }
 
-      /* about */
-      .about-grid { grid-template-columns: 1fr !important; gap: 28px; }
+      /* ── ABOUT ─────────────────────────────────────────────────────── */
+      .about-grid { grid-template-columns: 1fr !important; gap: 24px; }
       .about-img-wrap { padding-bottom: 0; }
-      .about-img-card { aspect-ratio: 16/9; max-height: 220px; }
-      .about-initials { font-size: 4rem; }
+      .about-img-card { aspect-ratio: 16/9; max-height: 210px; }
+      .about-initials { font-size: 3.8rem; }
       .about-exp-badge {
-        position: static !important;
+        position: static !important; bottom: auto; right: auto;
         display: inline-flex; align-items: center;
-        gap: 12px; padding: 12px 18px; margin-top: 12px;
-        border-radius: 12px; bottom: auto; right: auto;
+        gap: 10px; padding: 10px 16px; margin-top: 12px;
+        border-radius: 12px;
       }
-      .about-exp-num { font-size: 1.4rem !important; }
-      .about-skills-grid { grid-template-columns: 1fr 1fr; }
+      .about-exp-num { font-size: 1.3rem !important; }
+      .about-text { font-size: .95rem; margin-bottom: 20px; }
+      .about-skills-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
 
-      /* services */
-      .services-grid { grid-template-columns: 1fr; }
+      /* ── SERVICES ──────────────────────────────────────────────────── */
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-card { padding: 28px 22px; }
 
-      /* portfolio */
-      .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      /* ── PORTFOLIO ─────────────────────────────────────────────────── */
+      .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .portfolio-overlay {
         opacity: 1;
-        background: linear-gradient(to top, rgba(10,10,15,.95) 0%, rgba(10,10,15,.2) 65%, transparent 100%);
+        background: linear-gradient(to top, rgba(10,10,15,.96) 0%, transparent 70%);
       }
-      .view-project-btn { opacity: 1; transform: scale(1); }
+      .view-project-btn { opacity: 1; transform: scale(1) !important; }
+      .portfolio-thumb { font-size: 2.5rem; }
 
-      /* testimonials */
-      .testimonials-slider { grid-template-columns: 1fr; }
+      /* ── TESTIMONIALS ──────────────────────────────────────────────── */
+      .testimonials-slider { grid-template-columns: 1fr; gap: 16px; }
+      .testimonial-card { padding: 24px 20px; }
 
-      /* skills */
+      /* ── SKILLS ────────────────────────────────────────────────────── */
       .skills-grid { grid-template-columns: 1fr; gap: 16px; }
+      .skills-group { padding: 24px 20px; }
 
-      /* process */
-      .process-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      /* ── PROCESS ───────────────────────────────────────────────────── */
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .process-card { padding: 24px 18px; }
 
-      /* why */
-      .why-grid { grid-template-columns: 1fr; gap: 32px; }
-      .why-card { transform: none !important; }
+      /* ── WHY HIRE ME ───────────────────────────────────────────────── */
+      .why-grid { grid-template-columns: 1fr; gap: 28px; }
+      .why-card { padding: 18px 16px; }
+      .why-card-val { font-size: 1.5rem; }
 
-      /* cta */
-      .cta-inner { padding: 70px 0; }
+      /* ── CTA ───────────────────────────────────────────────────────── */
+      .cta-inner { padding: 60px 0; }
 
-      /* contact */
-      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
-      .contact-form { padding: 24px 20px; }
+      /* ── CONTACT ───────────────────────────────────────────────────── */
+      .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+      .contact-form { padding: 22px 18px; }
       .form-row { grid-template-columns: 1fr; gap: 0; margin-bottom: 0; }
+      .contact-link { padding: 12px 14px; }
+      .contact-link-val { font-size: .84rem; }
 
-      /* modal */
-      .modal-overlay { padding: 16px; }
-      .modal { padding: 24px 20px; border-radius: 16px; }
-      .modal h2 { font-size: 1.2rem; }
-      .results-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      /* ── MODAL ─────────────────────────────────────────────────────── */
+      .modal-overlay { padding: 14px; }
+      .modal { padding: 22px 18px; border-radius: 16px; }
+      .modal h2 { font-size: 1.15rem; }
+      .results-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
 
-      /* footer */
+      /* ── FOOTER ────────────────────────────────────────────────────── */
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
       .footer-brand { grid-column: 1 / -1; }
       .footer-brand p { max-width: 100%; }
@@ -1030,63 +1060,52 @@
 
     /* ── 480px small phone ───────────────────────────────────────────── */
     @media (max-width: 480px) {
-      .section { padding: 56px 0; }
+      .section { padding: 52px 0; }
       .container { padding: 0 16px; }
-      .section-title { font-size: clamp(1.65rem, 7vw, 2.1rem); }
-      .section-header { margin-bottom: 40px; }
+      .section-title { font-size: clamp(1.6rem, 7vw, 2rem); }
+      .section-header { margin-bottom: 36px; }
 
       /* hero */
-      .hero-badge { font-size: .68rem; padding: 6px 12px; }
+      .hero-badge { font-size: .67rem; padding: 5px 11px; }
       .hero-cta { flex-direction: column; align-items: stretch; }
       .hero-cta .btn { justify-content: center; width: 100%; }
       .hero-stats { gap: 8px; }
-      .stat-num { font-size: 1.45rem; }
+      .stat-num { font-size: 1.4rem; }
 
       /* about */
-      .about-grid { grid-template-columns: 1fr !important; gap: 20px; }
-      .about-skills-grid { grid-template-columns: 1fr !important; }
+      .about-grid { grid-template-columns: 1fr !important; gap: 18px; }
+      .about-skills-grid { grid-template-columns: 1fr !important; gap: 8px; }
       .about-img-card { max-height: 180px; }
       .about-initials { font-size: 3rem; }
+      .skill-pill { padding: 10px 12px; font-size: .8rem; }
 
       /* portfolio */
-      .portfolio-grid { grid-template-columns: 1fr; gap: 14px; }
+      .portfolio-grid { grid-template-columns: 1fr; gap: 12px; }
 
       /* process */
-      .process-grid { grid-template-columns: 1fr; gap: 12px; }
-      .process-card { padding: 24px 20px; }
-
-      /* skills */
-      .skills-group { padding: 24px 20px; }
-
-      /* why */
-      .why-item { padding: 14px; }
-      .why-item h4 { font-size: .88rem; }
-      .why-item p { font-size: .78rem; }
-      .why-card { padding: 18px 16px; }
-      .why-card-val { font-size: 1.4rem; }
+      .process-grid { grid-template-columns: 1fr; gap: 10px; }
 
       /* cta */
-      .cta-inner { padding: 56px 0; }
+      .cta-inner { padding: 48px 0; }
       .cta-btns { flex-direction: column; align-items: stretch; }
       .cta-btns .btn { justify-content: center; width: 100%; }
 
       /* contact */
-      .contact-form { padding: 20px 16px; }
-      .contact-link { padding: 12px 14px; }
-      .contact-link-val { font-size: .84rem; }
+      .contact-form { padding: 18px 14px; }
 
       /* modal */
-      .modal-overlay { padding: 10px; }
-      .modal { padding: 16px 14px; }
-      .results-grid { grid-template-columns: 1fr; gap: 10px; }
+      .modal-overlay { padding: 8px; }
+      .modal { padding: 14px 12px; }
+      .results-grid { grid-template-columns: 1fr; gap: 8px; }
 
       /* footer */
-      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-      .footer-bottom { flex-direction: column; text-align: center; gap: 6px; }
-      footer { padding: 48px 0 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      footer { padding: 44px 0 20px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
 
-      /* nav mobile menu links */
-      .mobile-menu a { font-size: 1.6rem; }
+      /* mobile menu */
+      .mobile-menu a { font-size: 1.5rem; }
+      .mobile-menu { gap: 24px; }
     }
   </style>
 </head>
