@@ -1,3 +1,4 @@
+<!-- Portfolio v10 2026-06-23 -->
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -487,6 +488,15 @@
     }
     .skill-pill:hover { border-color: var(--accent); transform: translateX(4px); }
     .skill-pill i { color: var(--accent); }
+    /* Simpler tag layout used on mobile — no SVG icons, no semi-transparent border */
+    .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+    .about-tag {
+      padding: 9px 16px; border-radius: 10px;
+      background: rgba(108,99,255,.1);
+      color: #6c63ff;
+      font-size: .84rem; font-weight: 600;
+    }
+    [data-theme="light"] .about-tag { background: rgba(108,99,255,.08); color: #4c45c5; }
     .timeline { margin-bottom: 36px; }
     .tl-item {
       display: flex; gap: 16px; padding: 20px 0;
@@ -986,11 +996,13 @@
         animation-duration: 0.8s !important;
         animation-iteration-count: 1 !important;
       }
-      /* Restore: modal open/close opacity (functional) */
-      .modal-overlay {
-        transition: opacity 0.2s ease !important;
-        transition-duration: 0.2s !important;
-      }
+      /* opacity:0 ≠ display:none for the GPU — these invisible elements still
+         sit in the compositor as active layers and cause duplication on Android Chrome.
+         Force them out of the render tree entirely when not in use. */
+      #loader.done { display: none !important; }
+      .modal-overlay:not(.open) { display: none !important; }
+      #back-top:not(.visible) { display: none !important; }
+      .modal { transform: none !important; }
 
       /* Hide orbs from DOM rendering entirely */
       .orb { display: none !important; }
@@ -1114,11 +1126,8 @@
       }
       .about-exp-num { font-size: 1.3rem !important; }
       .about-text { font-size: .94rem; margin-bottom: 18px; }
-      .about-skills-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px; margin-bottom: 24px;
-      }
-      .skill-pill { font-size: .82rem; padding: 10px 14px; }
+      .about-tags { gap: 8px; margin-bottom: 20px; }
+      .about-tag { font-size: .82rem; padding: 8px 13px; }
       .timeline { margin-bottom: 28px; }
       .tl-item { padding: 14px 0 14px 18px; gap: 12px; }
       .tl-year { font-size: .72rem; min-width: 38px; }
@@ -1260,8 +1269,8 @@
       .about-grid { gap: 20px; }
       .about-img-card { max-height: 180px; }
       .about-initials { font-size: 3rem; }
-      .about-skills-grid { grid-template-columns: 1fr; gap: 8px; }
-      .skill-pill { padding: 10px 12px; font-size: .78rem; }
+      .about-tags { gap: 6px; }
+      .about-tag { font-size: .78rem; padding: 7px 11px; }
       .about-text { font-size: .9rem; }
 
       /* services */
@@ -1498,13 +1507,13 @@
         <p class="about-text">
           I combine creativity and technology to create websites and visual identities that don't just look good—they generate results. Whether it's building a modern website, designing marketing materials, or creating a complete brand identity, I help businesses stand out and grow.
         </p>
-        <div class="about-skills-grid">
-          <div class="skill-pill"><i data-lucide="code-2" width="14" height="14"></i> Web Development</div>
-          <div class="skill-pill"><i data-lucide="palette" width="14" height="14"></i> Graphic Design</div>
-          <div class="skill-pill"><i data-lucide="zap" width="14" height="14"></i> Vibe Coding</div>
-          <div class="skill-pill"><i data-lucide="layers" width="14" height="14"></i> Brand Strategy</div>
-          <div class="skill-pill"><i data-lucide="smartphone" width="14" height="14"></i> Responsive Design</div>
-          <div class="skill-pill"><i data-lucide="trending-up" width="14" height="14"></i> Conversion Optimization</div>
+        <div class="about-tags">
+          <span class="about-tag">Web Development</span>
+          <span class="about-tag">Graphic Design</span>
+          <span class="about-tag">Vibe Coding</span>
+          <span class="about-tag">Brand Strategy</span>
+          <span class="about-tag">Responsive Design</span>
+          <span class="about-tag">Conversion Optimization</span>
         </div>
         <div class="timeline">
           <div class="tl-item">
