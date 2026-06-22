@@ -942,11 +942,22 @@
     /* ── 768px mobile — main mobile breakpoint ───────────────────────── */
     @media (max-width: 768px) {
 
-      /* ── KILL GPU-HEAVY EFFECTS (prevents the glitch/static noise) ── */
+      /* ── KILL GPU-HEAVY EFFECTS (prevents rendering glitches) ──────── */
       .orb { display: none !important; }
       .hero-img-ring { animation: none !important; }
       .hero-img-ring::before { animation: none !important; border: none; }
-      .reveal { transform: none !important; transition: opacity .5s ease; }
+      /* Disable all scroll-reveal on mobile — opacity transitions create
+         GPU composited layers that cause text to ghost on Android Chrome */
+      .reveal, .reveal.visible {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      /* Gradient text in initials causes layer bleed — use solid color */
+      .about-initials {
+        -webkit-text-fill-color: var(--accent) !important;
+        background: none !important;
+      }
 
       /* ── NO HOVER TRANSFORMS ON TOUCH ─────────────────────────────── */
       .skill-pill:hover,
