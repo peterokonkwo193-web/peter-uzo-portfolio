@@ -1580,86 +1580,61 @@
     <div class="section-header center reveal">
       <div class="section-label">My Work</div>
       <h2 class="section-title">Projects That <span class="gradient-text">Speak for Themselves</span></h2>
-      <p class="section-sub">A selection of recent projects across web development and graphic design.</p>
+      <p class="section-sub">Real projects I have built and launched. Tap any card to see the details and open the live site.</p>
     </div>
     <div class="portfolio-filters reveal">
       <button class="filter-btn active" data-filter="all">All Work</button>
       <button class="filter-btn" data-filter="web">Websites</button>
-      <button class="filter-btn" data-filter="design">Graphic Design</button>
-      <button class="filter-btn" data-filter="vibe">Vibe Coding</button>
+      <button class="filter-btn" data-filter="app">Web Apps</button>
     </div>
     <div class="portfolio-grid" id="portfolioGrid">
 
       <div class="portfolio-card" data-category="web" data-index="0">
-        <div class="portfolio-thumb">🏗️</div>
+        <div class="portfolio-thumb">🏡</div>
         <div class="portfolio-overlay">
-          <h4>Construction Company Site</h4>
-          <p>Real Estate & Construction · HTML, CSS, JS</p>
+          <h4>Peter O.U Real Estate</h4>
+          <p>Real Estate · Lagos &amp; Owerri</p>
           <div class="portfolio-tags">
-            <span class="tag">Website</span><span class="tag">+240% Leads</span>
+            <span class="tag">Website</span><span class="tag">Live Site</span>
           </div>
         </div>
         <button class="view-project-btn" onclick="openModal(0)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
       </div>
 
-      <div class="portfolio-card" data-category="design" data-index="1">
-        <div class="portfolio-thumb">🎨</div>
+      <div class="portfolio-card" data-category="web" data-index="1">
+        <div class="portfolio-thumb">👜</div>
         <div class="portfolio-overlay">
-          <h4>Restaurant Brand Identity</h4>
-          <p>Food & Beverage · Canva, Illustrator</p>
+          <h4>J &amp; O Luxury Boutique</h4>
+          <p>Fashion E-commerce · Online Store</p>
           <div class="portfolio-tags">
-            <span class="tag">Branding</span><span class="tag">Logo + Print</span>
+            <span class="tag">E-commerce</span><span class="tag">Live Site</span>
           </div>
         </div>
         <button class="view-project-btn" onclick="openModal(1)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
       </div>
 
-      <div class="portfolio-card" data-category="web" data-index="2">
-        <div class="portfolio-thumb">🏠</div>
+      <div class="portfolio-card" data-category="app" data-index="2">
+        <div class="portfolio-thumb">🎯</div>
         <div class="portfolio-overlay">
-          <h4>Real Estate Landing Page</h4>
-          <p>Real Estate · React, Tailwind CSS</p>
+          <h4>Rally — Quiz App</h4>
+          <p>Web App · Supabase</p>
           <div class="portfolio-tags">
-            <span class="tag">Landing Page</span><span class="tag">+180% Conversions</span>
+            <span class="tag">Web App</span><span class="tag">Accounts + AI Quizzes</span>
           </div>
         </div>
         <button class="view-project-btn" onclick="openModal(2)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
       </div>
 
-      <div class="portfolio-card" data-category="vibe" data-index="3">
-        <div class="portfolio-thumb">⚡</div>
+      <div class="portfolio-card" data-category="app" data-index="3">
+        <div class="portfolio-thumb">📋</div>
         <div class="portfolio-overlay">
-          <h4>AI-Powered SaaS Dashboard</h4>
-          <p>SaaS Startup · Lovable, Next.js</p>
+          <h4>Mekah Freelance Ops Dashboard</h4>
+          <p>Business Tool · Supabase</p>
           <div class="portfolio-tags">
-            <span class="tag">Vibe Coding</span><span class="tag">MVP</span>
+            <span class="tag">Dashboard</span><span class="tag">Live App</span>
           </div>
         </div>
         <button class="view-project-btn" onclick="openModal(3)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
-      </div>
-
-      <div class="portfolio-card" data-category="design" data-index="4">
-        <div class="portfolio-thumb">📱</div>
-        <div class="portfolio-overlay">
-          <h4>Social Media Campaign Pack</h4>
-          <p>E-commerce · Canva, Photoshop</p>
-          <div class="portfolio-tags">
-            <span class="tag">Social Media</span><span class="tag">20 Designs</span>
-          </div>
-        </div>
-        <button class="view-project-btn" onclick="openModal(4)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
-      </div>
-
-      <div class="portfolio-card" data-category="web" data-index="5">
-        <div class="portfolio-thumb">🔧</div>
-        <div class="portfolio-overlay">
-          <h4>Home Services Website</h4>
-          <p>Home Services · WordPress, Custom CSS</p>
-          <div class="portfolio-tags">
-            <span class="tag">Business Site</span><span class="tag">+300% Traffic</span>
-          </div>
-        </div>
-        <button class="view-project-btn" onclick="openModal(5)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
       </div>
 
     </div>
@@ -2251,58 +2226,40 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 /* ── MODAL DATA ──────────────────────────────────────────── */
 const projects = [
   {
-    title: 'Construction Company Site',
-    tags: ['Website', 'Construction', 'HTML/CSS/JS'],
-    problem: 'A regional construction company had no web presence and was losing leads to competitors who showed up in Google search results.',
-    solution: 'Designed and built a full business website with an intuitive services page, project gallery, contact form, and strong local SEO optimization.',
-    process: ['Discovery', 'Strategy', 'Wireframes', 'Design', 'Development', 'SEO', 'Launch'],
-    results: ['+240%', '+180%', '4.9★'],
-    resultLabels: ['More Leads', 'Organic Traffic', 'Google Rating']
+    title: 'Peter O.U Real Estate',
+    url: 'https://peter-ou-real-estate.vercel.app/',
+    tags: ['Website', 'Real Estate', 'Lagos & Owerri'],
+    problem: 'Buyers and investors looking for property in Lagos and Owerri worry about fake listings and bad documents. A real estate brand needs a site that builds trust fast and makes it easy to find the right property.',
+    solution: 'I built a premium real estate website with property search by location, type, budget and bedrooms, categories (luxury homes, apartments, land, commercial, short lets), location pages for Lekki, Ikoyi, Victoria Island, Ajah, Owerri and more, plus a "Why Choose Us" section on verified documents and secure transactions.',
+    process: ['Brief', 'Structure', 'Design', 'Development', 'Refinement', 'Launch'],
+    highlights: ['Property search filters', 'Browse by category', 'Location pages', 'Free consultation booking']
   },
   {
-    title: 'Restaurant Brand Identity',
-    tags: ['Branding', 'Food & Beverage', 'Canva + Illustrator'],
-    problem: 'A growing restaurant had no consistent visual identity—mismatched social media graphics, no logo system, and bland printed menus.',
-    solution: 'Created a complete brand identity: logo suite, color palette, typography system, business cards, menus, and social media templates.',
-    process: ['Discovery', 'Moodboard', 'Concept Design', 'Refinement', 'Brand Guide', 'Delivery'],
-    results: ['+65%', '100%', '3×'],
-    resultLabels: ['Social Engagement', 'Brand Consistency', 'Customer Recall']
+    title: 'J & O Luxury Boutique',
+    url: 'https://j-and-o-luxury-portal.vercel.app/',
+    tags: ['E-commerce', 'Fashion', 'Online Store'],
+    problem: 'A luxury fashion boutique needed an online store that feels as premium as its products and lets shoppers browse a large catalogue easily.',
+    solution: 'I designed and built a full boutique storefront with a mega menu (clothing, shoes, bags, watches and jewellery, accessories, beauty and menswear), search with suggestions, a wishlist, a shopping bag in Naira, and working category filters.',
+    process: ['Brand Feel', 'Catalogue Structure', 'Design', 'Development', 'Testing', 'Launch'],
+    highlights: ['Mega menu navigation', 'Search + suggestions', 'Wishlist & shopping bag', 'Womenswear & menswear']
   },
   {
-    title: 'Real Estate Landing Page',
-    tags: ['Landing Page', 'Real Estate', 'React'],
-    problem: 'A real estate agency needed a high-converting landing page for a luxury property launch with very tight deadlines.',
-    solution: 'Built a sleek, mobile-first landing page with a virtual tour section, inquiry form, WhatsApp CTA, and Google Maps integration.',
-    process: ['Brief', 'Wireframe', 'Design', 'Development', 'Testing', 'Launch'],
-    results: ['+180%', '42%', '7 Days'],
-    resultLabels: ['Conversions', 'Form Fill Rate', 'Delivered In']
+    title: 'Rally — Quiz App',
+    url: 'https://rally-khaki.vercel.app/',
+    tags: ['Web App', 'Supabase', 'Quizzes'],
+    problem: 'Quizzes are a fun way to learn and compete, but making good questions takes a lot of time.',
+    solution: 'I built Rally, a quiz web app where users sign up, pick a character and play quizzes. Each quiz has 20 auto-generated questions, so new content is always ready. User accounts and data run on Supabase.',
+    process: ['Idea', 'App Flow', 'UI Design', 'Supabase Backend', 'Quiz Generation', 'Deploy'],
+    highlights: ['Sign up & login', 'Character selection', '20 questions per quiz', 'Supabase backend']
   },
   {
-    title: 'AI-Powered SaaS Dashboard',
-    tags: ['Vibe Coding', 'SaaS', 'Lovable + Next.js'],
-    problem: 'An early-stage startup needed a working MVP dashboard to present to investors but had no technical co-founder.',
-    solution: 'Used AI-powered development (Lovable + Next.js) to prototype and deliver a full interactive dashboard in record time.',
-    process: ['Scoping', 'AI Prototyping', 'Custom Dev', 'UI Polish', 'Deployment'],
-    results: ['72 hrs', '$0 Backend', 'Funded'],
-    resultLabels: ['Time to MVP', 'External Infra Cost', 'Investor Outcome']
-  },
-  {
-    title: 'Social Media Campaign Pack',
-    tags: ['Social Media', 'E-commerce', 'Canva + Photoshop'],
-    problem: 'An e-commerce brand needed 20+ coordinated social media designs for a product launch across Instagram, Facebook, and Twitter.',
-    solution: 'Designed a cohesive 20-piece campaign pack: story templates, feed posts, cover banners, and promotional graphics.',
-    process: ['Brief', 'Concept', 'Templates', 'Customization', 'Export'],
-    results: ['+120%', '20 Assets', '3 Days'],
-    resultLabels: ['Engagement Rate', 'Delivered', 'Turnaround']
-  },
-  {
-    title: 'Home Services Website',
-    tags: ['Business Website', 'Home Services', 'WordPress'],
-    problem: 'A plumbing and electrical services company was invisible online and relied entirely on word-of-mouth, limiting growth.',
-    solution: 'Built a full WordPress website with service pages, before/after gallery, booking form, emergency call button, and local SEO setup.',
-    process: ['Strategy', 'WordPress Setup', 'Design', 'Content', 'SEO', 'Launch'],
-    results: ['+300%', '#1', '+85%'],
-    resultLabels: ['Monthly Traffic', 'Local Google Rank', 'Booking Requests']
+    title: 'Mekah Freelance Ops Dashboard',
+    url: 'https://freelance-tracker-beta.vercel.app/',
+    tags: ['Dashboard', 'Business Tool', 'Supabase'],
+    problem: 'Running subcontracted Upwork jobs across several workers gets messy fast. Jobs, who is doing what, payment status and notes end up scattered across chats and spreadsheets.',
+    solution: 'I built a secure browser-based operations dashboard that tracks every job, worker assignment, status, payment and note in one place. Data can be exported to Excel or copied straight into WhatsApp for quick updates.',
+    process: ['Workflow Mapping', 'Database Design', 'Dashboard UI', 'Supabase Setup', 'Deploy'],
+    highlights: ['Job & worker tracking', 'Payment status', 'Excel export', 'Copy to WhatsApp']
   }
 ];
 
@@ -2326,15 +2283,14 @@ function openModal(idx) {
       </div>
     </div>
     <div class="case-section">
-      <h3>Results</h3>
-      <div class="results-grid">
-        ${p.results.map((r,i) => `
-          <div class="result-item">
-            <div class="result-num">${r}</div>
-            <div class="result-label">${p.resultLabels[i]}</div>
-          </div>`).join('')}
+      <h3>Highlights</h3>
+      <div class="process-steps">
+        ${p.highlights.map(h => `<div class="process-step">${h}</div>`).join('')}
       </div>
     </div>
+    <a href="${p.url}" target="_blank" rel="noopener" class="btn btn-primary">
+      View Live Site <i data-lucide="external-link" width="16" height="16"></i>
+    </a>
   `;
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
