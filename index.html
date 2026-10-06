@@ -1626,6 +1626,18 @@
         <button class="view-project-btn" onclick="openModal(2)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
       </div>
 
+      <div class="portfolio-card" data-category="app" data-index="3">
+        <div class="portfolio-thumb"><img src="assets/projects/rally.jpg" alt="Rally live multiplayer quiz game" loading="lazy"></div>
+        <div class="portfolio-overlay">
+          <h4>Rally — Live Quiz Game</h4>
+          <p>Multiplayer Web App · Supabase</p>
+          <div class="portfolio-tags">
+            <span class="tag">Web App</span><span class="tag">Live Multiplayer</span>
+          </div>
+        </div>
+        <button class="view-project-btn" onclick="openModal(3)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2240,6 +2252,15 @@ const projects = [
     solution: 'I built a secure browser-based operations dashboard that tracks every job, worker assignment, status, payment and note in one place. Data can be exported to Excel or copied straight into WhatsApp for quick updates.',
     process: ['Workflow Mapping', 'Database Design', 'Dashboard UI', 'Supabase Setup', 'Deploy'],
     highlights: ['Job & worker tracking', 'Payment status', 'Excel export', 'Copy to WhatsApp']
+  },
+  {
+    title: 'Rally — Live Quiz Game',
+    url: 'https://rally-khaki.vercel.app/',
+    tags: ['Web App', 'Multiplayer', 'Supabase'],
+    problem: 'Classrooms, events and game nights need a quick, fun way to get a whole room playing together, without everyone installing an app.',
+    solution: 'I built Rally, a live multiplayer quiz game. The host puts the game on a big screen, players join from their phones, and points go to the fastest correct answers. It has 8 categories, from General Knowledge and Sports to Movies, Music and History, with 21 public quizzes and counting. Real-time play and accounts run on Supabase.',
+    process: ['Idea', 'Game Flow', 'UI Design', 'Supabase Real-time', 'Quiz Content', 'Deploy'],
+    highlights: ['Host on screen, play on phone', 'Speed-based scoring', '8 quiz categories', 'Real-time multiplayer']
   }
 ];
 
