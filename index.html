@@ -610,6 +610,7 @@
       padding: 40px;
     }
     .modal-overlay.open .modal { transform: scale(1); }
+    .modal-shot { width: 100%; border-radius: 14px; border: 1px solid var(--border); margin-bottom: 28px; display: block; }
     .modal-close {
       position: sticky; top: 0; float: right;
       width: 36px; height: 36px; border-radius: 50%;
@@ -1581,12 +1582,13 @@
     <div class="section-header center reveal">
       <div class="section-label">My Work</div>
       <h2 class="section-title">Projects That <span class="gradient-text">Speak for Themselves</span></h2>
-      <p class="section-sub">Real projects I have built and launched. Tap any card to see the details and open the live site.</p>
+      <p class="section-sub">Websites, web apps and designs I have built. Tap any card to see the details.</p>
     </div>
     <div class="portfolio-filters reveal">
       <button class="filter-btn active" data-filter="all">All Work</button>
       <button class="filter-btn" data-filter="web">Websites</button>
       <button class="filter-btn" data-filter="app">Web Apps</button>
+      <button class="filter-btn" data-filter="design">UI &amp; Graphic Design</button>
     </div>
     <div class="portfolio-grid" id="portfolioGrid">
 
@@ -1636,6 +1638,54 @@
           </div>
         </div>
         <button class="view-project-btn" onclick="openModal(3)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
+      </div>
+
+      <div class="portfolio-card" data-category="design" data-index="4">
+        <div class="portfolio-thumb"><img src="assets/projects/verve.jpg" alt="Verve real estate dashboard design" loading="lazy"></div>
+        <div class="portfolio-overlay">
+          <h4>Verve — Real Estate Dashboard</h4>
+          <p>UI Design · Property Sales Dashboard</p>
+          <div class="portfolio-tags">
+            <span class="tag">UI Design</span><span class="tag">Design Preview</span>
+          </div>
+        </div>
+        <button class="view-project-btn" onclick="openModal(4)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
+      </div>
+
+      <div class="portfolio-card" data-category="design" data-index="5">
+        <div class="portfolio-thumb"><img src="assets/projects/solex.jpg" alt="SoleX sneaker store homepage design" loading="lazy"></div>
+        <div class="portfolio-overlay">
+          <h4>SoleX — Sneaker Store</h4>
+          <p>UI Design · E-commerce Homepage</p>
+          <div class="portfolio-tags">
+            <span class="tag">UI Design</span><span class="tag">Design Preview</span>
+          </div>
+        </div>
+        <button class="view-project-btn" onclick="openModal(5)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
+      </div>
+
+      <div class="portfolio-card" data-category="design" data-index="6">
+        <div class="portfolio-thumb"><img src="assets/projects/expertinasia.jpg" alt="Expertinasia real estate software ad design" loading="lazy"></div>
+        <div class="portfolio-overlay">
+          <h4>Expertinasia — Social Media Ad</h4>
+          <p>Graphic Design · Real Estate Software</p>
+          <div class="portfolio-tags">
+            <span class="tag">Graphic Design</span><span class="tag">Design Preview</span>
+          </div>
+        </div>
+        <button class="view-project-btn" onclick="openModal(6)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
+      </div>
+
+      <div class="portfolio-card" data-category="design" data-index="7">
+        <div class="portfolio-thumb"><img src="assets/projects/contentpro.jpg" alt="ContentPro AI content tool landing page design" loading="lazy"></div>
+        <div class="portfolio-overlay">
+          <h4>ContentPro — AI Content Tool</h4>
+          <p>UI Design · SaaS Landing Page</p>
+          <div class="portfolio-tags">
+            <span class="tag">UI Design</span><span class="tag">Design Preview</span>
+          </div>
+        </div>
+        <button class="view-project-btn" onclick="openModal(7)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
       </div>
 
     </div>
@@ -2261,6 +2311,42 @@ const projects = [
     solution: 'I built Rally, a live multiplayer quiz game. The host puts the game on a big screen, players join from their phones, and points go to the fastest correct answers. It has 8 categories, from General Knowledge and Sports to Movies, Music and History, with 21 public quizzes and counting. Real-time play and accounts run on Supabase.',
     process: ['Idea', 'Game Flow', 'UI Design', 'Supabase Real-time', 'Quiz Content', 'Deploy'],
     highlights: ['Host on screen, play on phone', 'Speed-based scoring', '8 quiz categories', 'Real-time multiplayer']
+  },
+  {
+    title: 'Verve — Real Estate Dashboard',
+    image: 'assets/projects/verve.jpg',
+    tags: ['UI Design', 'Real Estate', 'Dashboard'],
+    problem: 'Real estate teams juggle sales numbers, listings and client messages across different tools, which makes it hard to see how the business is doing at a glance.',
+    solution: 'I designed Verve, a clean property sales dashboard that brings everything onto one screen: total sales, property viewers, completed deals and revenue, a sales statistics chart, a listing board with property cards, and a built-in messages panel.',
+    process: ['Research', 'Wireframe', 'Visual Design', 'Components', 'Final Mockup'],
+    highlights: ['Sales & revenue overview', 'Listing board', 'Built-in messaging', 'Soft, modern colour palette']
+  },
+  {
+    title: 'SoleX — Sneaker Store',
+    image: 'assets/projects/solex.jpg',
+    tags: ['UI Design', 'E-commerce', 'Fashion'],
+    problem: 'A sneaker store needed a homepage that feels premium, shows off top brands and makes it quick for shoppers to find the right pair.',
+    solution: 'I designed a full e-commerce homepage for SoleX: a bold "Step Into Greatness" hero, a top brands strip, shop by category, a best sellers grid with ratings and prices, a summer sale banner, trust badges (free shipping, returns, authenticity, secure payment) and a full footer with newsletter sign-up.',
+    process: ['Brief', 'Layout', 'Visual Design', 'Product Grid', 'Final Mockup'],
+    highlights: ['Strong hero section', 'Shop by category', 'Best sellers grid', 'Sale & trust sections']
+  },
+  {
+    title: 'Expertinasia — Social Media Ad',
+    image: 'assets/projects/expertinasia.jpg',
+    tags: ['Graphic Design', 'Social Media', 'Real Estate Tech'],
+    problem: 'Expertinasia builds custom real estate software and needed an ad that grabs attention and explains its services quickly.',
+    solution: 'I designed a social media ad with a bold headline ("Your real estate business is unique. Why use generic software?"), a 3D tower and phone mockup showing a property app, icons for each service (CRM, property management, listing platforms, tenant portals, mobile apps) and a clear "Get Started" button.',
+    process: ['Brief', 'Copy', 'Concept', 'Design', 'Export'],
+    highlights: ['Attention-grabbing headline', 'App mockup visual', 'Service icons', 'Clear call to action']
+  },
+  {
+    title: 'ContentPro — AI Content Tool',
+    image: 'assets/projects/contentpro.jpg',
+    tags: ['UI Design', 'SaaS', 'AI'],
+    problem: 'Content creators need captions, scripts and hashtags fast, and an AI tool has to explain what it does in seconds or visitors leave.',
+    solution: 'I designed a dark, modern landing page for ContentPro: a hero with a live AI generator preview, a tools section (caption generator, YouTube scripts, hashtags, content ideas), a simple 3-step "How it works", user reviews, a call-to-action banner and a footer with newsletter sign-up.',
+    process: ['Research', 'Wireframe', 'Visual Design', 'Sections', 'Final Mockup'],
+    highlights: ['Live AI preview in hero', 'Tool cards', '3-step explainer', 'Reviews section']
   }
 ];
 
@@ -2269,6 +2355,7 @@ function openModal(idx) {
   document.getElementById('modalTitle').textContent = p.title;
   document.getElementById('modalMeta').innerHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
   document.getElementById('modalBody').innerHTML = `
+    ${p.image ? `<img class="modal-shot" src="${p.image}" alt="${p.title}">` : ''}
     <div class="case-section">
       <h3>The Problem</h3>
       <p>${p.problem}</p>
@@ -2289,9 +2376,9 @@ function openModal(idx) {
         ${p.highlights.map(h => `<div class="process-step">${h}</div>`).join('')}
       </div>
     </div>
-    <a href="${p.url}" target="_blank" rel="noopener" class="btn btn-primary">
+    ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener" class="btn btn-primary">
       View Live Site <i data-lucide="external-link" width="16" height="16"></i>
-    </a>
+    </a>` : ''}
   `;
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
