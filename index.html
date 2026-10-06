@@ -572,6 +572,7 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 3.5rem; transition: transform .4s;
     }
+    .portfolio-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
     .portfolio-card:hover .portfolio-thumb { transform: scale(1.05); }
     .portfolio-overlay {
       position: absolute; inset: 0;
@@ -1113,7 +1114,7 @@
       .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .portfolio-overlay {
         opacity: 1;
-        background: linear-gradient(to top, rgba(10,10,15,.95) 0%, transparent 65%);
+        background: linear-gradient(to top, rgba(10,10,15,.97) 0%, rgba(10,10,15,.85) 45%, rgba(10,10,15,.25) 80%, transparent 100%);
       }
       .portfolio-overlay h4 { font-size: .9rem; }
       .portfolio-overlay p { font-size: .72rem; margin-bottom: 8px; }
@@ -1590,7 +1591,7 @@
     <div class="portfolio-grid" id="portfolioGrid">
 
       <div class="portfolio-card" data-category="web" data-index="0">
-        <div class="portfolio-thumb">🏡</div>
+        <div class="portfolio-thumb"><img src="assets/projects/realestate.jpg" alt="Peter O.U Real Estate website" loading="lazy"></div>
         <div class="portfolio-overlay">
           <h4>Peter O.U Real Estate</h4>
           <p>Real Estate · Lagos &amp; Owerri</p>
@@ -1602,7 +1603,7 @@
       </div>
 
       <div class="portfolio-card" data-category="web" data-index="1">
-        <div class="portfolio-thumb">👜</div>
+        <div class="portfolio-thumb"><img src="assets/projects/boutique.jpg" alt="J &amp; O Luxury Boutique website" loading="lazy"></div>
         <div class="portfolio-overlay">
           <h4>J &amp; O Luxury Boutique</h4>
           <p>Fashion E-commerce · Online Store</p>
@@ -1614,19 +1615,7 @@
       </div>
 
       <div class="portfolio-card" data-category="app" data-index="2">
-        <div class="portfolio-thumb">🎯</div>
-        <div class="portfolio-overlay">
-          <h4>Rally — Quiz App</h4>
-          <p>Web App · Supabase</p>
-          <div class="portfolio-tags">
-            <span class="tag">Web App</span><span class="tag">Accounts + AI Quizzes</span>
-          </div>
-        </div>
-        <button class="view-project-btn" onclick="openModal(2)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
-      </div>
-
-      <div class="portfolio-card" data-category="app" data-index="3">
-        <div class="portfolio-thumb">📋</div>
+        <div class="portfolio-thumb"><img src="assets/projects/mekah.jpg" alt="Mekah Freelance Ops Dashboard" loading="lazy"></div>
         <div class="portfolio-overlay">
           <h4>Mekah Freelance Ops Dashboard</h4>
           <p>Business Tool · Supabase</p>
@@ -1634,7 +1623,7 @@
             <span class="tag">Dashboard</span><span class="tag">Live App</span>
           </div>
         </div>
-        <button class="view-project-btn" onclick="openModal(3)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
+        <button class="view-project-btn" onclick="openModal(2)"><i data-lucide="arrow-up-right" width="16" height="16"></i></button>
       </div>
 
     </div>
@@ -2242,15 +2231,6 @@ const projects = [
     solution: 'I designed and built a full boutique storefront with a mega menu (clothing, shoes, bags, watches and jewellery, accessories, beauty and menswear), search with suggestions, a wishlist, a shopping bag in Naira, and working category filters.',
     process: ['Brand Feel', 'Catalogue Structure', 'Design', 'Development', 'Testing', 'Launch'],
     highlights: ['Mega menu navigation', 'Search + suggestions', 'Wishlist & shopping bag', 'Womenswear & menswear']
-  },
-  {
-    title: 'Rally — Quiz App',
-    url: 'https://rally-khaki.vercel.app/',
-    tags: ['Web App', 'Supabase', 'Quizzes'],
-    problem: 'Quizzes are a fun way to learn and compete, but making good questions takes a lot of time.',
-    solution: 'I built Rally, a quiz web app where users sign up, pick a character and play quizzes. Each quiz has 20 auto-generated questions, so new content is always ready. User accounts and data run on Supabase.',
-    process: ['Idea', 'App Flow', 'UI Design', 'Supabase Backend', 'Quiz Generation', 'Deploy'],
-    highlights: ['Sign up & login', 'Character selection', '20 questions per quiz', 'Supabase backend']
   },
   {
     title: 'Mekah Freelance Ops Dashboard',
